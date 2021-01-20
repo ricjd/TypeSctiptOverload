@@ -4,10 +4,19 @@ class BaseClass {
   }
 }
 
+interface OverloadFunctionOptions {
+  someArg: string;
+}
+
+interface OverloadFunction {
+  (options: OverloadFunctionOptions): void;
+  (aString: string, secondString: string): void;
+}
+
 class ExtendedClass1 extends BaseClass {
   myExtendedFunctions = {
-    overloadFunction: (someArg: string): void => {
-      console.log(`overloadFunction: ${someArg}`);
+    overloadFunction: (someArg: string, secondString: string): void => {
+      console.log(`overloadFunction: ${someArg} and ${secondString}`);
     }
   }
 }
@@ -18,7 +27,6 @@ class ExtendedClass2 extends BaseClass {
       console.log(`overloadFunction: ${options.someArg}`);
     }
   }
-
 }
 
 const classes = {
@@ -28,5 +36,7 @@ const classes = {
 
 function doAClass(className: 'extendedclass1' | 'extendedclass2') {
   const aClass = new classes[className];
-  aClass.myExtendedFunctions.overloadFunction({someArg: 'hello'}); 
+  const myOverloadFunction = aClass.myExtendedFunctions.overloadFunction as OverloadFunction;
+  myOverloadFunction({someArg: 'hello'});
+  myOverloadFunction('hello', 'somehting');
 }
