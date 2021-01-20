@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "target": "es2019",
+    "lib": ["esnext"],
+    "baseUrl": ".",
+    "strict": true,
+    "typeRoots": ["./node_modules/@types", "./types"]
+  },
+  "ts-node": {
+    "files": true,
+    "transpileOnly": true
+  }
+}
