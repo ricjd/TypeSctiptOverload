@@ -5,15 +5,20 @@ class BaseClass {
 }
 
 class ExtendedClass1 extends BaseClass {
-  overloadFunction (someArg: string): void {
-    console.log(`overloadFunction: ${someArg}`);
+  myExtendedFunctions = {
+    overloadFunction: (someArg: string): void => {
+      console.log(`overloadFunction: ${someArg}`);
+    }
   }
 }
 
 class ExtendedClass2 extends BaseClass {
-  overloadFunction (options: {someArg: string}): void {
-    console.log(`overloadFunction: ${options.someArg}`);
+  myExtendedFunctions = {
+    overloadFunction: (options: {someArg: string}): void => {
+      console.log(`overloadFunction: ${options.someArg}`);
+    }
   }
+
 }
 
 const classes = {
@@ -23,5 +28,5 @@ const classes = {
 
 function doAClass(className: 'extendedclass1' | 'extendedclass2') {
   const aClass = new classes[className];
-  aClass.overloadFunction({someArg: 'hello'}); 
+  aClass.myExtendedFunctions.overloadFunction({someArg: 'hello'}); 
 }
